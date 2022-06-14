@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html style="font-size: 37.52px;">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <title>身高体重比例表</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link href="./assets/css/tools.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="font-size: 16px;">
+    <div class="g-doc">
+        <style>
+            .u-khdLogo {
+                width: 28px;
+                display: inline-block;
+                float: left;
+                margin: 6px 10px 0px 0px;
+                height: 30px;
+                overflow: hidden;
+            }
+
+            .u-khdLogo img {
+                height: 100%;
+                width: auto;
+            }
+
+            body a.wx_color {
+                color: #193e5d;
+            }
+
+            body a.wx_color span {
+                color: #ff4444;
+            }
+
+            body i.u-dlRnow.bg_color {
+                background-color: #ff808b;
+            }
+
+            body i.u-khdLogo.andLogo {
+                width: 50px;
+                height: 40px;
+                margin-top: 0;
+                margin-right: 3px;
+            }
+
+            .BannerWrap {
+                position: relative;
+                overflow: hidden;
+                z-index: 3;
+                clear: both;
+            }
+
+            .m-tgBanner {
+                position: relative;
+                height: 0;
+                overflow: hidden;
+                opacity: 0;
+            }
+
+            .m-tgBanner img {
+                vertical-align: top;
+                width: 100%;
+            }
+
+            .m-tgBanner.on {
+                margin-top: 0;
+                opacity: 1;
+            }
+
+            .m-tgBanner.on del {
+                width: 24px;
+                height: 24px;
+                border-radius: 24px;
+                background: rgba(211, 211, 211, 0.9);
+                color: #fff;
+                text-align: center;
+                line-height: 24px;
+                font-size: 16px;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                text-decoration: none;
+            }
+
+            .tgAndroid {
+                height: 0;
+                overflow: hidden;
+                border-bottom: 0;
+                opacity: 0;
+            }
+
+            .topFix {
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                top: 0;
+                left: 0;
+                position: fixed;
+                z-index: 0;
+                height: 40px;
+                height: 40px;
+            }
+        </style>
+
+
+
+
+        <div>
+            <a href="./index.html">
+                <i class="layui-icon layui-icon-return" style="color: #55D07F;font-size: 30px;position: absolute;left: 10px;top: 10px;"></i>
+            </a>
+        </div>
+        <h1>身高体重比例表</h1>
+        <div class="m-section">您的性别</div>
+        <form id="JbgSel">
+            <div class="item">
+                <label for="man" onclick=""><input type="radio" name="sex" id="man" checked="checked"
+                        value="1"><span>男</span></label>
+                <label for="felman" onclick=""><input type="radio" name="sex" id="felman"
+                        value="0"><span>女</span></label>
+            </div>
+        </form>
+        <div class="m-section">您的身高<span>厘米(cm)</span></div>
+        <div class="m-input"><input type="number" name="sg" id="Jheight" placeholder="请输入身高"></div>
+        <div class="m-section">您的体重<span>千克(kg)</span></div>
+        <div class="m-input"><input type="number" name="tz" id="Jweight" placeholder="请输入体重"></div>
+        <div class="m-section">您的年龄</div>
+        <div class="m-input"><input type="number" name="nl" id="Jage" placeholder="请输入年龄"></div>
+        <div class="m-section">日运动量</div>
+        <form id="Jsport">
+            <div class="item">
+                <label for="mild" onclick=""><input type="radio" name="sport" id="mild" checked="checked"
+                        value="0"><span>轻度</span></label>
+                <label for="mezzo" onclick=""><input type="radio" name="sport" id="mezzo"
+                        value="1"><span>中度</span></label>
+                <label for="severe" onclick=""><input type="radio" name="sport" id="severe"
+                        value="2"><span>重度</span></label>
+            </div>
+        </form>
+        <div class="m-work"><input type="submit" id="JworkOut" value="点击计算"></div>
+        <div class="m-result" id="Jresult">
+            <div class="m-result-tit">查询结果</div>
+            <p>测试结果：<em id="Jresult0" style="font-size:16px;color:#FF6985">~</em></p>
+            <p>理想体重：<em id="JresultA">~</em></p>
+            <p>身体质量指数：<em id="JresultB">~</em></p>
+            <p>基础代谢率：<em id="JresultC">~</em></p>
+            <p>每天需要热量：<em id="JresultD">~</em></p>
+            <p>如需增重：<em id="JresultE">~</em></p>
+            <p>如需减重：<em id="JresultF">~</em></p>
+        </div>
+        <script type="text/javascript">
+            function $$(id) {
+                return (typeof id == "object") ? id : document.getElementById(id);
+            }
+            var JbgSel = $$("JbgSel"),
+                JworkOut = $$("JworkOut"),
+                Jresult0 = $$("Jresult0"),
+                JresultA = $$("JresultA"),
+                JresultB = $$("JresultB"),
+                JresultC = $$("JresultC"),
+                JresultD = $$("JresultD"),
+                JresultE = $$("JresultE"),
+                JresultF = $$("JresultF"),
+                Jheight = $$("Jheight"),
+                Jweight = $$("Jweight"),
+                Jage = $$("Jage"),
+                Jsport = $$("Jsport"),
+                gain,
+                loss,
+                realWeight,
+                beeStandard,
+                energyStandard,
+                bodyExponent;
+            function touchEvent(elm, fn) {
+                if ("ontouchstart" in document.documentElement) {
+                    elm.addEventListener("touchstart", fn, false);
+                } else {
+                    elm.addEventListener("click", fn, false);
+                }
+            }
+            touchEvent(JworkOut, function () {
+                if (chk()) {
+                    comput();
+                    fill();
+                }
+            });
+            function chk() {
+                if (isNaN(Jheight.value) || (Number(Jheight.value) < 1 || Number(Jheight.value) > 400)) {
+                    showTopTip("请输入真实的身高");
+                    hideTopTip();
+                    return false;
+                } else if (isNaN(Jweight.value) || (Number(Jweight.value) < 1 || Number(Jweight.value) > 300)) {
+                    showTopTip("请输入真实的体重");
+                    hideTopTip();
+                    return false;
+                } else if (isNaN(Jage.value) || (Number(Jage.value) < 1 || Number(Jage.value) > 110)) {
+                    showTopTip("请输入真实的年龄");
+                    hideTopTip();
+                    return false;
+                };
+                return true;
+            }
+            function calculat(x) {
+                return (Math.round(x * 100) / 100);
+            }
+            function comput() {
+                // 性别和运动强度radio
+                var sexs = JbgSel.sex;
+                var sexsValue;
+                for (var i = 0; i < sexs.length; i++) {
+                    if (sexs[i].checked) {
+                        var sexsValue = sexs[i].value;
+                    };
+                };
+                var sports = Jsport.sport;
+                var sportsValue;
+                for (var i = 0; i < sports.length; i++) {
+                    if (sports[i].checked) {
+                        var sportsValue = sports[i].value;
+                    };
+                };
+                bodyExponent = Math.round(Jweight.value * 10000 / (Jheight.value * Jheight.value));
+                realWeight = ((parseInt(sexsValue) == 1) ? (Math.round(50 + (2.3 * (Jheight.value - 152)) / 2.54)) : (Math.round(45.5 + (2.3 * (Jheight.value - 152)) / 2.54)));
+                if (bodyExponent > 40) {
+                    Jresult0.innerHTML = "您体型严重肥胖";
+                } else if (bodyExponent > 30) {
+                    Jresult0.innerHTML = "您体型肥胖";
+                } else if (bodyExponent > 27) {
+                    Jresult0.innerHTML = "您体型偏胖";
+                } else if (bodyExponent > 22) {
+                    Jresult0.innerHTML = "您体型稍胖";
+                } else if (bodyExponent >= 21) {
+                    Jresult0.innerHTML = "您体型正常";
+                } else if (bodyExponent >= 18) {
+                    Jresult0.innerHTML = "您体型偏瘦";
+                } else if (bodyExponent >= 16) {
+                    Jresult0.innerHTML = "您体型较瘦";
+                } else {
+                    Jresult0.innerHTML = "您体型严重消瘦"
+                }
+                if (sexsValue == 1) {
+                    if (Jage.value >= 0 && Jage.value <= 3) {
+                        beeStandard = calculat(60.9 * Jweight.value - 54);
+                    } else if (Jage.value > 3 && Jage.value <= 10) {
+                        beeStandard = calculat(22.7 * Jweight.value - 495);
+                    } else if (Jage.value > 10 && Jage.value <= 18) {
+                        beeStandard = calculat(17.5 * Jweight.value + 651);
+                    } else if (Jage.value > 18 && Jage.value <= 30) {
+                        beeStandard = calculat(15.3 * Jweight.value + 679);
+                    } else if (Jage.value > 30 && Jage.value <= 60) {
+                        beeStandard = calculat(11.6 * Jweight.value + 879);
+                    } else if (Jage.value > 60) {
+                        beeStandard = calculat(13.5 * Jweight.value + 487);
+                    }
+                } else {
+                    if (Jage.value >= 0 && Jage.value <= 3) {
+                        beeStandard = calculat(61 * Jweight.value - 51);
+                    } else if (Jage.value > 3 && Jage.value <= 10) {
+                        beeStandard = calculat(22.5 * Jweight.value + 499);
+                    } else if (Jage.value > 10 && Jage.value <= 18) {
+                        beeStandard = calculat(12.2 * Jweight.value + 746);
+                    } else if (Jage.value > 18 && Jage.value <= 30) {
+                        beeStandard = calculat(14.7 * Jweight.value + 496);
+                    } else if (Jage.value > 30 && Jage.value <= 60) {
+                        beeStandard = calculat(8.7 * Jweight.value + 829);
+                    } else if (Jage.value > 60) {
+                        beeStandard = calculat(10.5 * Jweight.value + 596);
+                    }
+                }
+                if (sexsValue == 1) {
+                    switch (sportsValue) {
+                        case "0":
+                            energyStandard = calculat(beeStandard * 1.55);
+                            var low = beeStandard * 1.55 + 500;
+                            var high = beeStandard * 1.55 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 1.55 - 1000;
+                            var high1 = beeStandard * 1.55 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                        case "1":
+                            energyStandard = calculat(beeStandard * 1.78);
+                            var low = beeStandard * 1.78 + 500;
+                            var high = beeStandard * 1.78 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 1.78 - 1000;
+                            var high1 = beeStandard * 1.78 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                        case "2":
+                            energyStandard = calculat(beeStandard * 2.10);
+                            var low = beeStandard * 2.10 + 500;
+                            var high = beeStandard * 2.10 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 2.10 - 1000;
+                            var high1 = beeStandard * 2.10 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                    }
+                } else {
+                    switch (sportsValue) {
+                        case "0":
+                            energyStandard = calculat(beeStandard * 1.56);
+                            var low = beeStandard * 1.56 + 500;
+                            var high = beeStandard * 1.56 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 1.56 - 1000;
+                            var high1 = beeStandard * 1.56 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                        case "1":
+                            energyStandard = calculat(beeStandard * 1.64);
+                            var low = beeStandard * 1.64 + 500;
+                            var high = beeStandard * 1.64 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 1.64 - 1000;
+                            var high1 = beeStandard * 1.64 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                        case "2":
+                            energyStandard = calculat(beeStandard * 1.82);
+                            var low = beeStandard * 1.82 + 500;
+                            var high = beeStandard * 1.82 + 1000;
+                            gain = calculat(low) + " ~ " + calculat(high);
+                            var low1 = beeStandard * 1.82 - 1000;
+                            var high1 = beeStandard * 1.82 - 500;
+                            loss = calculat(low1) + " ~ " + calculat(high1);
+                            break;
+                    }
+                }
+            }
+            function fill() {
+                $$("Jresult").style.display = "block";
+                JresultA.innerHTML = realWeight + "公斤";
+                JresultB.innerHTML = bodyExponent + "（21-22为最佳）";
+                JresultC.innerHTML = beeStandard + "卡路里/天";
+                JresultD.innerHTML = energyStandard + "卡路里/天";
+                JresultE.innerHTML = gain + "卡路里/天";
+                JresultF.innerHTML = loss + "卡路里/天";
+            }
+            function showTopTip(msg) {
+                var tipEle = document.getElementById("JtopTipMsg");
+                if (!tipEle) {
+                    tipEle = document.createElement("div");
+                    tipEle.id = "JtopTipMsg";
+                    tipEle.style.cssText = "display:none;width:120px;padding:10px;line-height:20px;font-size:12px;background-color:rgba(000,000,000,0.9);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;color:#fff;text-align:center;-webkit-transition:all 0.3s ease-in;transition:all 0.3s ease-in;position:fixed;top:50%;left:50%;margin-left:-70px;margin-top:-20px;opacity:1;z-index:999;";
+                    document.body.appendChild(tipEle);
+                }
+                tipEle.innerHTML = msg;
+                tipEle.style.display = "block";
+                setTimeout(function () {
+                    tipEle.style.opacity = "1";
+                }, 0);
+            }
+            function hideTopTip() {
+                var tipEle = document.getElementById("JtopTipMsg");
+                if (tipEle) {
+                    setTimeout(function () {
+                        tipEle.style.opacity = "0";
+                        setTimeout(function () {
+                            tipEle.style.display = "none";
+                        }, 300);
+                    }, 1500);
+                }
+            }
+        </script>
+
+
+        <script type="text/javascript">
+            var footFn = {
+                getId: function (id) {
+                    return document.getElementById(id);
+                },
+                getElem: function (selectors) {
+                    return document.querySelector(selectors);
+                },
+                getElems: function (selectors) {
+                    return document.querySelectorAll(selectors);
+                },
+                show: function (obj) {
+                    obj.style.display = "block";
+                },
+                hide: function (obj) {
+                    obj.style.display = "none";
+                }
+            };
+        </script>
+    </div>
+
+
+    <style>
+        .m-wxgzzh img {
+            width: 100%;
+        }
+    </style>
+    <div id="JtopTipMsg"
+        style="display: none; width: 120px; padding: 10px; line-height: 20px; font-size: 12px; background-color: rgba(0, 0, 0, 0.9); border-radius: 3px; color: rgb(255, 255, 255); text-align: center; transition: all 0.3s ease-in 0s; position: fixed; top: 50%; left: 50%; margin-left: -70px; margin-top: -20px; opacity: 0; z-index: 999;">
+        请输入真实的身高</div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,hr,thead,tbody,tfoot,th,td{margin:0;padding:0;}
+html{-ms-text-size-adjust:none;-webkit-text-size-adjust:none;text-size-adjust:none;font-size:62.5%;}
+body{font-size:15px;line-height:1.5em;color:#333333;}
+body,button,input,select,textarea{font-family:'helvetica neue',tahoma,'hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;}
+b,strong{font-weight:bold;}
+i,em{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+table th,table td{border:1px solid #ddd;padding:5px;}
+table th{font-weight:inherit;border-bottom-width:2px;border-bottom-color:#ccc;}
+img{border:0 none;width:auto\9;max-width:100%;vertical-align:top;}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;vertical-align:baseline;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],input[disabled]{cursor:default;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+  input{line-height:normal!important;}
+}
+select[size],select[multiple],select[size][multiple]{border:1px solid #AAA;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,video,progress{display:inline-block;}
+body{background-color:#fff;}
+
+.g-doc{overflow:hidden;margin:0 auto;}
+@media only screen and (min-width:1025px){
+  .g-doc{max-width:320px;}
+}
+
+h1{font-size:20px;font-weight:bold;color:#333;margin:10px auto;text-align:center;line-height:30px;}
+/*标题*/
+.m-section{color:#999;font-size:15px;margin:10px;line-height:25px;height:25px;}
+.m-section span{font-size:14px;color:#555;padding:0 5px;}
+/*文字列表*/
+.m-title{font-size:14px;margin:10px 0px 0;padding:0 10px;line-height:40px;height:40px;font-weight:bold;color:#333;background:#f6f6f6;}
+.m-input{border:1px solid #DDDDDD;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;margin:10px;}
+.m-input input{-webkit-appearance:none;-moz-appearance:none;appearance:none;height:40px;width:96%;padding:0 2%;background:transparent;border:none;outline:none;}
+.m-input input[id="Jdata"],.m-input input[id="JdataA"]{position:relative;}
+
+/*input type="radio" 均分样式*/
+.item{margin:10px;overflow:hidden;display:-webkit-box;display:-moz-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.item label{display:block;position:relative;-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+.item span{display:block;width:100%;position:absolute;left:0px;top:0px;line-height:40px;text-align:center;color:#333;}
+.item input{display:block;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;height:40px;line-height:40px;text-align:center;margin:0px;outline:none;border-radius:0;border:1px #DDDDDD solid;}
+
+.item input::-ms-check{display:block;width:100%;height:40px;line-height:40px;text-align:center;margin:0px;outline:none;border:1px #ddd solid;color:transparent;-ms-box-sizing:border-box;box-sizing:border-box;-ms-border-radius:0;border-radius:0;}
+.item input::-ms-check ~ span{color:#55D07F;}
+
+.item input:checked{border:1px #55D07F solid;background-color:#fff;}
+.item input:checked ~ span{color:#55D07F;}
+
+/*点击计算按钮*/
+.m-work{margin:10px;}
+.m-work input{-webkit-appearance:none;-moz-appearance:none;appearance:none;height:40px;width:100%;color:#fff;text-align:center;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background:#55D07F;border:none;outline:none;font-size:15px;}
+
+/*结果*/
+.m-result{margin:10px;padding:10px;line-height:25px;color:#555555;border:1px solid #f7d8d8;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;word-break:break-all;word-wrap:break-word;white-space:normal;background:#fff8f8;display:none;}
+.m-result-tit{text-align:center;color:#ff738d;font-size:16px;line-height:30px;}
+.m-result em{font-style:normal;}
+
