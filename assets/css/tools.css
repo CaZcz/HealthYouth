@@ -52,6 +52,8 @@ h1{font-size:20px;font-weight:bold;color:#333;margin:10px auto;text-align:center
 /*点击计算按钮*/
 .m-work{margin:10px;}
 .m-work input{-webkit-appearance:none;-moz-appearance:none;appearance:none;height:40px;width:100%;color:#fff;text-align:center;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background:#55D07F;border:none;outline:none;font-size:15px;}
+.m-workGo{padding: 6px 0;-webkit-appearance:none;-moz-appearance:none;appearance:none;width:100%;text-align:center;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background:#55D07F;border:none;outline:none;font-size:15px;}
+.m-workGo a{color:#fff}
 
 /*结果*/
 .m-result{margin:10px;padding:10px;line-height:25px;color:#555555;border:1px solid #f7d8d8;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;word-break:break-all;word-wrap:break-word;white-space:normal;background:#fff8f8;display:none;}
