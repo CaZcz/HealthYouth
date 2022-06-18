@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
     <meta content="telephone=no" name="format-detection">
-    <title>身高体重比例表</title>
+    <title>健康自测</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link href="./assets/css/tools.css" rel="stylesheet" type="text/css">
 
@@ -115,7 +115,7 @@
                 <i class="layui-icon layui-icon-return" style="color: #55D07F;font-size: 30px;position: absolute;left: 10px;top: 10px;"></i>
             </a>
         </div>
-        <h1>身高体重比例表</h1>
+        <h1>健康自测</h1>
         <div class="m-section">您的性别</div>
         <form id="JbgSel">
             <div class="item">
@@ -153,6 +153,8 @@
             <p>如需增重：<em id="JresultE">~</em></p>
             <p>如需减重：<em id="JresultF">~</em></p>
             <div class="m-workGo" id="workGo">
+                <a id="report-a" href="">点击查看你的专属报告</a>
+            </div>
         </div>
         <script type="text/javascript">
             function $$(id) {
@@ -227,11 +229,8 @@
                 };
                 
                 // 根据体型跳转报告
-                var para = document.createElement("a");
-                var node = document.createTextNode("点击查看你的专属报告");
-                para.appendChild(node); 
-                var element = document.getElementById("workGo");
-                element.appendChild(para);
+                var para = document.getElementById("report-a");
+                
 
                 bodyExponent = Math.round(Jweight.value * 10000 / (Jheight.value * Jheight.value));
                 realWeight = ((parseInt(sexsValue) == 1) ? (Math.round(50 + (2.3 * (Jheight.value - 152)) / 2.54)) : (Math.round(45.5 + (2.3 * (Jheight.value - 152)) / 2.54)));
