@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
     <meta content="telephone=no" name="format-detection">
     <title>健康自测</title>
-    <link rel="stylesheet" href="./layui/css/layui.css">
-    <link href="./assets/css/tools.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link href="../assets/css/tools.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -112,11 +112,11 @@
 
         <div style="width:100%;margin: auto;">
             <h1>
-                <a href="./knows.html">
+                <a href="./trueindex.html">
                     <i class="layui-icon layui-icon-left" style="color: #55D07F;font-size: 30px;float: left;"></i>
                 </a>
                 健康自测
-                <a href="./jingXuanShipu.html">
+                <a href="./t_jingXuanShipu.html">
                     <i class="layui-icon layui-icon-right" style="color: #55D07F;font-size: 30px;float: right;"></i>
                 </a>
             </h1>
@@ -241,28 +241,28 @@
                 realWeight = ((parseInt(sexsValue) == 1) ? (Math.round(50 + (2.3 * (Jheight.value - 152)) / 2.54)) : (Math.round(45.5 + (2.3 * (Jheight.value - 152)) / 2.54)));
                 if (bodyExponent > 40) {
                     Jresult0.innerHTML = "您体型严重肥胖";
-                    para.setAttribute("href", "./tizhong/pianPang.html");
+                    para.setAttribute("href", "../tizhong/pianPang.html");
                 } else if (bodyExponent > 30) {
                     Jresult0.innerHTML = "您体型肥胖";
-                    para.setAttribute("href", "./tizhong/pianPang.html");
+                    para.setAttribute("href", "../tizhong/pianPang.html");
                 } else if (bodyExponent > 27) {
                     Jresult0.innerHTML = "您体型偏胖";
-                    para.setAttribute("href", "./tizhong/pianPang.html");
+                    para.setAttribute("href", "../tizhong/pianPang.html");
                 } else if (bodyExponent > 22) {
                     Jresult0.innerHTML = "您体型稍胖";
-                    para.setAttribute("href", "./tizhong/pianPang.html");
+                    para.setAttribute("href", "../tizhong/pianPang.html");
                 } else if (bodyExponent >= 21) {
                     Jresult0.innerHTML = "您体型正常";
-                    para.setAttribute("href", "./tizhong/zhengChang.html");
+                    para.setAttribute("href", "../tizhong/zhengChang.html");
                 } else if (bodyExponent >= 18) {
                     Jresult0.innerHTML = "您体型偏瘦";
-                    para.setAttribute("href", "./tizhong/pianShou.html");
+                    para.setAttribute("href", "../tizhong/pianShou.html");
                 } else if (bodyExponent >= 16) {
                     Jresult0.innerHTML = "您体型较瘦";
-                    para.setAttribute("href", "./tizhong/pianShou.html");
+                    para.setAttribute("href", "../tizhong/pianShou.html");
                 } else {
                     Jresult0.innerHTML = "您体型严重消瘦"
-                    para.setAttribute("href", "./tizhong/pianShou.html");
+                    para.setAttribute("href", "../tizhong/pianShou.html");
                 }
                 if (sexsValue == 1) {
                     if (Jage.value >= 0 && Jage.value <= 3) {
