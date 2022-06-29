@@ -20,19 +20,28 @@
                 <i class="layui-icon layui-icon-right" style="color: #ffffff;font-size: 30px;"></i>
             </a>
         </div>
-        <div style="position: absolute;left: 88%;top: 324px;width:32px;">
+        <div id="second" style="position: absolute;left: 88%;top: 324px;width:32px;">
             <a href="../trueindex/t_sports.html">
                 <i class="layui-icon layui-icon-right" style="color: #55D07F;font-size: 30px;"></i>
             </a>
         </div>
-        <div style="position: absolute;left: 88%;top: 536px;width:32px;">
+        <div id="third" style="position: absolute;left: 88%;top: 536px;width:32px;">
             <a href="../trueindex/t_suXingcan.html">
                 <i class="layui-icon layui-icon-right" style="color: #55D07F;font-size: 30px;"></i>
             </a>
         </div>
         <img src="../images/pianShou.png" alt="" style="width: 100%;">
     </div>
-
+    <script>
+        // 获取浏览器宽度重新定位
+        var w = window.innerWidth;
+        var topNum2 = w / 375 * 324;
+        var topNum2S = topNum2.toString();
+        var topNum3 = w / 375 * 536;
+        var topNum3S = topNum3.toString();
+        document.getElementById("second").style.top=topNum2S+"px";
+        document.getElementById("third").style.top=topNum3S+"px";
+    </script>
 </body>
 
 </html>
